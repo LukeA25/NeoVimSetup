@@ -1,7 +1,3 @@
--- ========= File tree & terminal user commands =========
--- :FT -> toggle nvim-tree
-vim.api.nvim_create_user_command("FT", "NvimTreeToggle", {})
-
 -- :T -> open a horizontal ToggleTerm (re-uses the same hidden terminal)
 vim.api.nvim_create_user_command("T", function()
   local Terminal = require("toggleterm.terminal").Terminal
@@ -30,7 +26,7 @@ vim.keymap.set("n", "<Tab>", function()
 end, { silent = true })
 
 -- Delete to close and save window
-vim.keymap.set("n", "<Del>", function()
+vim.keymap.set("n", "<BS>", function()
   if vim.bo.modified then
     vim.cmd("update")
   end
@@ -60,21 +56,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
-
--- ========= Save and Close =========
--- Save (only if modified) and close the current window with <Del>
-vim.keymap.set("n", "<Del>", function()
-  -- write only if modified
-  if vim.bo.modified then
-    vim.cmd("update")
-  end
-  -- if more than one window, just close this one; otherwise quit
-  if #vim.api.nvim_list_wins() > 1 then
-    pcall(vim.cmd, "close")
-  else
-    pcall(vim.cmd, "q")
-  end
-end, { silent = true })
 
 -- ========= Markdown Preview =========
 vim.keymap.set("n", "<leader>mp", "<cmd>Glow<CR>", { silent = true })
