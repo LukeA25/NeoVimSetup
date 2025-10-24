@@ -14,6 +14,19 @@ return {
     end,
   },
 
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      signs = true, -- show icons in the sign column
+      keywords = {
+        TODO = { icon = " ", color = "info" },
+        FIX  = { icon = " ", color = "error" },
+        NOTE = { icon = " ", color = "hint" },
+      },
+    },
+  },
+
   -- File explorer (show gitignored but dimmed)
   {
     "nvim-tree/nvim-tree.lua",
@@ -106,6 +119,19 @@ return {
     end
   },
   {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.clang_format,
+          null_ls.builtins.diagnostics.clang_check,
+        },
+      })
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -124,6 +150,23 @@ return {
         }),
         sources = cmp.config.sources({ { name = "nvim_lsp" }, { name = "luasnip" } }),
       })
+    end,
+  },
+
+  -- Debugger
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      local dap, dapui = require("dap"), require("dapui")
+      dapui.setup()
+      require("nvim-dap-virtual-text").setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
+      dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
+      dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
     end,
   },
 
