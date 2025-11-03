@@ -1,5 +1,4 @@
-# Luke's Neovim Setup
-Luke’s Neovim Setup
+# My Neovim Setup
 
 ![Neovim setup screenshot](./example_screenshot.png)
 
@@ -22,8 +21,6 @@ Uses `lazy.nvim` for plugin management, `clangd` for LSP, and a dark transparent
 - **Custom LSP Hover** — K shows docs or signature help intelligently
 - **ToggleTerm** — drop-down terminal (:T) for quick commands
 
----
-
 ## Installation
 
 1. Clone this repo:
@@ -35,11 +32,9 @@ Uses `lazy.nvim` for plugin management, `clangd` for LSP, and a dark transparent
 3. Run `:Lazy` to view/manage plugins.
 4. (Optional) Run `:checkhealth` to verify setup.
 
----
-
 ## Keymaps
 
-### Window Management
+#### Window Management
 
 | Action | Shortcut |
 |--------|-----------|
@@ -51,7 +46,7 @@ Uses `lazy.nvim` for plugin management, `clangd` for LSP, and a dark transparent
 | Save and close window | `<BS>` |
 | Cycle through windows | `<Tab>` |
 
-### Navigation & File Explorer
+#### Navigation & File Explorer
 
 | Action | Shortcut |
 |--------|-----------|
@@ -59,7 +54,7 @@ Uses `lazy.nvim` for plugin management, `clangd` for LSP, and a dark transparent
 | Fuzzy find files | `<leader>ff` |
 | Jump to next TODO (cycle + wrap) | `<leader>t` |
 
-### LSP & Diagnostics
+#### LSP & Diagnostics
 
 | Action | Shortcut |
 |--------|-----------|
@@ -70,14 +65,12 @@ Uses `lazy.nvim` for plugin management, `clangd` for LSP, and a dark transparent
 | Jump to next diagnostic | `]d` |
 | Jump to previous diagnostic | `[d` |
 
-### Terminal & Markdown
+#### Terminal & Markdown
 
 | Action | Shortcut |
 |--------|-----------|
 | Toggle horizontal terminal | `:T` |
 | Markdown preview | `<leader>mp` |
-
----
 
 ## Notes
 
