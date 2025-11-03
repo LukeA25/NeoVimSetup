@@ -33,8 +33,8 @@ end
 vim.keymap.set("n", "<leader>t", jump_next_cycle, { desc = "Next todo (cycle)" })
 
 -- ========= Window navigation =========
-vim.keymap.set("n", "<leader>h", "<C-w>l", { silent = true })
-vim.keymap.set("n", "<leader>l", "<C-w>h", { silent = true })
+vim.keymap.set("n", "<leader>h", "<C-w>h", { silent = true })
+vim.keymap.set("n", "<leader>l", "<C-w>l", { silent = true })
 vim.keymap.set("n", "<leader>j", "<C-w>j", { silent = true })
 vim.keymap.set("n", "<leader>k", "<C-w>k", { silent = true })
 
@@ -64,8 +64,8 @@ local function toggle_resize_mode()
   resize_mode = not resize_mode
   if resize_mode then
     print("Resize Mode ON (h/j/k/l)")
-    vim.keymap.set("n", "h", ":vertical resize -3<CR>", { silent = true, buffer = 0 })
-    vim.keymap.set("n", "l", ":vertical resize +3<CR>", { silent = true, buffer = 0 })
+    vim.keymap.set("n", "h", ":vertical resize +3<CR>", { silent = true, buffer = 0 })
+    vim.keymap.set("n", "l", ":vertical resize -3<CR>", { silent = true, buffer = 0 })
     vim.keymap.set("n", "j", ":resize +3<CR>", { silent = true, buffer = 0 })
     vim.keymap.set("n", "k", ":resize -3<CR>", { silent = true, buffer = 0 })
   else

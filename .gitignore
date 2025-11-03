@@ -1,0 +1,21 @@
+# macOS junk files
+.DS_Store
+
+# Lazy.nvim lockfile (auto-generated)
+lazy-lock.json
+
+# Neovim backup/swap/undo files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.save
+
+# Personal backup init file
+init.vim.save
+
+# Optional: if you ever generate logs or profiling data
+*.log
+
+# Example screenshots / local assets
+example_screenshot.png
