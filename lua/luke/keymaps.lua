@@ -81,6 +81,7 @@ vim.keymap.set("n", "<leader>r", toggle_resize_mode, { desc = "Toggle resize mod
 
 -- ========= File finding (Telescope) =========
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { silent = true, })
 
 -- ========= File tree toggle (convenience) =========
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true })
