@@ -9,6 +9,8 @@ vim.api.nvim_create_user_command("T", function()
   runner:toggle()
 end, {})
 
+vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+
 -- ========= Diagnostics popup (your old map) =========
 vim.keymap.set("n", "<C-d>", vim.diagnostic.open_float, { silent = true })
 
