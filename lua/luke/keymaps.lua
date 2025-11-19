@@ -59,6 +59,16 @@ vim.keymap.set("n", "<BS>", function()
   end
 end, { silent = true })
 
+-- New Windows
+vim.keymap.set("n", "<leader>v", function()
+  vim.cmd("vsplit")
+  vim.cmd("Telescope find_files")
+end, { silent = true })
+vim.keymap.set("n", "<leader>s", function()
+  vim.cmd("split")
+  vim.cmd("Telescope find_files")
+end, { silent = true })
+
 -- ========= Window Resizing =========
 local resize_mode = false
 
