@@ -91,6 +91,29 @@ end
 
 vim.keymap.set("n", "<leader>r", toggle_resize_mode, { desc = "Toggle resize mode" })
 
+-- ========== Window Swap Mode ==========
+local swap_mode = false
+
+local function toggle_swap_mode()
+  swap_mode = not swap_mode
+  if swap_mode then
+    print("Swap Mode ON (h/j/k/l)")
+    -- Swap with left/right/up/down
+    vim.keymap.set("n", "h", "<C-w>H", { silent = true, buffer = 0 })
+    vim.keymap.set("n", "l", "<C-w>L", { silent = true, buffer = 0 })
+    vim.keymap.set("n", "k", "<C-w>K", { silent = true, buffer = 0 })
+    vim.keymap.set("n", "j", "<C-w>J", { silent = true, buffer = 0 })
+  else
+    print("Swap Mode OFF")
+    vim.keymap.del("n", "h", { buffer = 0 })
+    vim.keymap.del("n", "l", { buffer = 0 })
+    vim.keymap.del("n", "k", { buffer = 0 })
+    vim.keymap.del("n", "j", { buffer = 0 })
+  end
+end
+
+vim.keymap.set("n", "<leader>m", toggle_swap_mode, { desc = "Toggle swap window mode" })
+
 -- ========= File finding (Telescope) =========
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { silent = true })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { silent = true, })
@@ -103,7 +126,6 @@ vim.keymap.set("n", "K", function()
   local ok = pcall(vim.lsp.buf.signature_help)
   if not ok then vim.lsp.buf.hover() end
 end, { silent = true })
-vim.keymap.set("n", "<leader>s", vim.lsp.buf.signature_help, { buffer = bufnr, silent = true })
 
 -- ========= Yank highlight =========
 vim.api.nvim_create_autocmd("TextYankPost", {
